@@ -33,7 +33,7 @@ require([
       height: 1000000,
       resource: cup_resource,
       anchor: "relative",
-      anchorPosition: {x: 0, y: 0, z: -0.5}
+      anchorPosition: {x: 0, y: 0, z: -0.49}
     }]
   };
   var ballSymbol = {
