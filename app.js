@@ -96,7 +96,6 @@ require([
     }
     else {
       dfd.resolve("done");
-      // console.log("stop");
     }
     return dfd;
   }
@@ -142,7 +141,6 @@ require([
       this.result.classList.add("result");
       hud.appendChild(this.result);
 
-
       this.level = document.createElement("div");
       this.level.classList.add("level", "show");
       hud.appendChild(this.level);
@@ -165,7 +163,6 @@ require([
       this.currentLevel.classList.add("currentlevel");
       bar.appendChild(this.currentLevel);
       
-
       this.playButton = document.createElement("button");
       this.playButton.innerText = "Play";
       this.playButton.classList.add("play", "show");
@@ -184,8 +181,6 @@ require([
       this.result.classList.remove("show");
       this.playButton.classList.add("show");
       this.level.classList.add("show");
-      
-
     }
 
     hide() {
@@ -243,7 +238,7 @@ require([
     }
 
     _initMap() {
-      let map = new Map({
+      var map = new Map({
         basemap: "none"
       });
 
@@ -425,7 +420,7 @@ require([
     }
   }
 
-  game = new Game();
+  var game = new Game();
   game.newGame();
 
 });
