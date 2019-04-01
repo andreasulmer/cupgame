@@ -271,7 +271,9 @@ require([
       this.view.environment.lighting.date = new Date(2018, 12, 24, 11, 33, 30, 0);
       this.view.environment.lighting.directShadowsEnabled = true;
       this.view.environment.lighting.ambientOcclusionEnabled = true;
-      this.view.environment.lighting.cameraTrackingEnabled = false
+      this.view.environment.lighting.cameraTrackingEnabled = false;
+
+      this.view.ui.components = [];
       
       var graphicsLayer = new GraphicsLayer();
       this.graphicsLayer = graphicsLayer;
