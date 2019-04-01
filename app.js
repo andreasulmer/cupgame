@@ -245,15 +245,6 @@ require([
       this.hud = new HUD();
       this.hud.playButton.onclick = () => this.play();
       this.hud.newGame.onclick = () => this.newGame();
-      
-
-      document.getElementById("shuffle").onclick = this.shuffle.bind(this, 0);
-      document.getElementById("singleshuffle").onclick = this.singleShuffle.bind(this);
-      document.getElementById("lift").onclick = this.liftAll.bind(this);
-      document.getElementById("liftUp").onclick = this.liftOne.bind(this);
-      
-      document.getElementById("newgame").onclick = this.newGame.bind(this);
-      document.getElementById("play").onclick = this.play.bind(this);
     }
 
     _initMap() {
@@ -338,7 +329,6 @@ require([
           this.hud.lose();
           this.setLevel(this.level - 1);
         }
-        //console.log("new level "+this.level);
         this.hud.playAgain();
       }.bind(this));
       
