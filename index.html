@@ -26,28 +26,33 @@
       left:0;
       right:0;
       margin: auto;
-      width: 400px;
+      width: 90vw;
+      max-width: 500px;
       text-align: center;
-
+      
       font-family: "bungee",sans-serif;
       font-size: 2.5em;
+    }
+    #hud > * {
+      display: block;
     }
 
     #hud button, #hud .currentlevel {
       font-family: inherit;
       font-size: inherit;
-      padding: 10px 10px;
+						 
 
       background-image: linear-gradient(to bottom, #3093c7, #1c5a85);
       text-shadow: -2px 3px 0 rgba(0,0,0,0.5);font-weight:bold;
       color: white;
-      border-radius: 22px;
+      border-radius: 0.7em;
       border: 1px solid white;
       box-shadow: 0 0 18px #3093c7;
     }
 
     #hud button.play {
       width: 100%;
+      line-height: 2em;
     }
 
     #hud .result {
@@ -55,7 +60,7 @@
       font-weight: bold;
       color: grey;
       -webkit-text-stroke: 1px black;
-      margin-bottom: 0.5em;
+      pointer-events: none;
     }
 
     #hud .result.win {
@@ -103,6 +108,7 @@
     #hud .currentlevel {
       left: 30%;
       width:10%;
+      padding:10px;
       position: absolute;
       transition: left 1s ease-out, bottom 1s ease-in;
       background-image: linear-gradient(to bottom, gold, #a38500);
@@ -110,10 +116,12 @@
     }
 
     #hud .newgame {
-      width: 100%;
-      transform: scale(0.4);
-      transform-origin: top;
+      font-size: 50%;
+      display: block;
+      margin: auto;
+      padding: 0 2.5em;
       background-image: linear-gradient(to bottom,#1c5a85, #0b2537);
+      line-height: 2em;
     }
 
 
