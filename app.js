@@ -303,6 +303,10 @@ require([
     }
 
     evalHits(response) {
+      if(response.results.length === 0) {
+        //no cup clicked, give user another chance
+        return; 
+      }
       this.disableClick();
       var result = this._evalHits(response.results);
       this.liftAll(result.cupId, "up")
