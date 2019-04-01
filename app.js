@@ -7,7 +7,10 @@ require([
   "dojo/domReady!"
 ], function (Map, SceneView, GraphicsLayer, Graphic, Deferred) {
 
-  var point = {
+
+  /* helpers */
+
+  var pointAtZero = {
     type: "point",
     x: 0,
     y: 0,
@@ -17,13 +20,10 @@ require([
     }
   };
 
-
-  var CUP_MODELS = {
+  var cupModels = {
     cone: {primitive: "cone"},
     gltfcup: {href: "./low-poly_plastic_cup/scene.gltf"}
   }
-
-  var cup_resource = CUP_MODELS.gltfcup;
 
   var cupSymbol = {
     type: "point-3d",
@@ -31,15 +31,16 @@ require([
       type: "object",
       width: 700000,
       height: 1000000,
-      resource: cup_resource,
+      resource: cupModels.gltfcup,
       anchor: "relative",
       anchorPosition: {x: 0, y: 0, z: -0.49}
     }]
   };
+
   var ballSymbol = {
     type: "point-3d",
     symbolLayers: [{
-      type: "object",  // the visible black ball
+      type: "object",  // the visible small ball
       width: 150000,
       height: 150000,
       anchor: "bottom",
@@ -53,7 +54,7 @@ require([
       type: "object",  // the invisible hittest area
       width: 600000,  // slightly smaller than the visible cup
       height: 900000,
-      resource: cup_resource,
+      resource: cupModels.gltfcup,
       anchor: "relative",
       anchorPosition: {x: 0, y: 0, z: -0.5},
       material: {
@@ -68,7 +69,7 @@ require([
       symbol.symbolLayers[0].material = {color: color};
     }
     var pointGraphic = new Graphic({
-      geometry: point,
+      geometry: pointAtZero,
       symbol: symbol,
       attributes: attributes
     });
@@ -76,13 +77,11 @@ require([
     return pointGraphic;
   }
 
-
-  const movePatterns = [
+  var movePatterns = [
     [2, 0, -2],
     [1, -1, 0],
     [0, 1, -1]
-  ]
-
+  ];
 
   function loop(c, cb, loopsteps, dfd) {
     if (!dfd) {
@@ -102,6 +101,7 @@ require([
     return dfd;
   }
 
+  
   class Cup {
     constructor(xpos, id, withBall, color) {
       this.graphics = [];
@@ -124,12 +124,8 @@ require([
           if(g.attributes.cup !== undefined) {
           var sl = g.symbol.symbolLayers.getItemAt(0);
           sl.tilt += rotDelta;
-          sl.anchorPosition.z += zDelta; //lift via anchorPos, with zDelta 0..1
+          sl.anchorPosition.z += zDelta;
           g.symbol = g.symbol.clone();
-
-          //lift via geometry
-          //g.geometry.z += zDelta;
-          //g.geometry = g.geometry.clone();
         }
       }
     }
@@ -192,8 +188,6 @@ require([
 
     hide() {
       this.hud.classList.remove("show");
-      // this.result.classList.remove("show");
-      // this.level.classList.remove("show");
     }
 
     win() {
@@ -219,13 +213,10 @@ require([
       this.playButton.textContent = "Go again";
       this.newGame.classList.add("show");
       this.hud.classList.add("show");
-      //this.level.classList.add("show");
     }
 
     setLevel(level) {
       this.currentLevel.style.left = (level-1)*10 + "%"; //button is 10% wide
-      //this.currentLevel.style.bottom = (level-1)*10 + "%";
-      
     }
 
   }
@@ -254,7 +245,6 @@ require([
 
       map.ground.surfaceColor = "#e3eff6";
       
-
       this.view = new SceneView({
         container: "viewDiv",
         qualityProfile: "high",
@@ -303,7 +293,7 @@ require([
       this.loopsteps = Math.round(72/level/2)*2; //ensure 
       this.shuffleCnt = level;
       this.hud.setLevel(level);
-      console.log("level " + this.level, "shuffle " +this.shuffleCnt, "loopsteps " + this.loopsteps );
+      //console.log("level " + this.level, "shuffle " +this.shuffleCnt, "loopsteps " + this.loopsteps );
     }
 
     play() {
@@ -346,18 +336,19 @@ require([
 
     init() {
       // random choose cup with ball
-      // create cups
       var ballId = Math.floor(Math.random() * 3);
       this.secret = ballId;
-      var c0 = new Cup(0, 0, ballId === 0);//, "red");
+
+      // create cups
+      var c0 = new Cup(0, 0, ballId === 0);
       this.graphicsLayer.addMany(c0.graphics);
       this.cups.push(c0);
       this.cupsPos[0] = c0;
-      var c1 = new Cup(this.cupSpace, 1, ballId === 1);//, "green");
+      var c1 = new Cup(this.cupSpace, 1, ballId === 1);
       this.graphicsLayer.addMany(c1.graphics);
       this.cups.push(c1);
       this.cupsPos[1] = c1;
-      var c2 = new Cup(this.cupSpace * 2, 2, ballId === 2);//, "blue");
+      var c2 = new Cup(this.cupSpace * 2, 2, ballId === 2);
       this.graphicsLayer.addMany(c2.graphics);
       this.cups.push(c2);
       this.cupsPos[2] = c2;
@@ -384,7 +375,6 @@ require([
           this.cupsPos[i].move(this.cupMoveDistance * 25 / this.loopsteps * movePattern[i], Math.sin(step / this.loopsteps * Math.PI * 2) * this.cupMoveDistance * 40/this.loopsteps * movePattern[i] * movePattern[3]);
         }
       }.bind(this), this.loopsteps)
-      // done.then(function (r) {console.log(r);});
       return done;
     };
 
@@ -399,7 +389,6 @@ require([
       setTimeout(function(done){
         this.liftOne(order[2], upOrDown).then(function(){done.resolve()})
       }.bind(this, done), 200);
-      // done.then(function(){console.log("lift done")});
       return done;
     }
 
@@ -410,12 +399,8 @@ require([
       var loopsteps = this.loopsteps * stepsFactor;
 
       var done = loop(0, function (step) {
-        this.cups[cupId].lift(Math.sin(step / loopsteps * Math.PI * 2) * -3/loopsteps * factor, Math.sin(step / loopsteps * Math.PI * 2) * -200/loopsteps * factor);  //lift via symbol.anchorPosition, 0..1 number
-        //this.cups[i].lift(Math.sin(step / 24 * Math.PI * 2) * 100000, Math.sin(step / 24 * Math.PI * 2) * -8);  //lift via geometry.z
-      }.bind(this), this.loopsteps)
-      done.then(function (r) {
-        //console.log(r);
-      });
+        this.cups[cupId].lift(Math.sin(step / loopsteps * Math.PI * 2) * -3/loopsteps * factor, Math.sin(step / loopsteps * Math.PI * 2) * -200/loopsteps * factor);
+      }.bind(this), this.loopsteps);
       return done;
     }
 
