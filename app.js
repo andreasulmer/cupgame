@@ -144,7 +144,7 @@ require([
 
 
       this.level = document.createElement("div");
-      this.level.classList.add("level");
+      this.level.classList.add("level", "show");
       hud.appendChild(this.level);
 
       const minLevel = document.createElement("div");
@@ -183,6 +183,8 @@ require([
       this.playButton.innerText = "Play";
       this.result.classList.remove("show");
       this.playButton.classList.add("show");
+      this.level.classList.add("show");
+      
 
     }
 
@@ -199,6 +201,8 @@ require([
     princess() {
       this.result.textContent = "👸 Congrats! You rescued the princess."
       this.playButton.classList.remove("show");
+      this.level.classList.remove("show");
+      
     }
 
     lose () {

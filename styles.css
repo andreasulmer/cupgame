@@ -58,13 +58,13 @@ body,
   -webkit-text-stroke: 1px yellow;
 }
 
-#hud, #hud .newgame, #hud .result, #hud .play{
+#hud, #hud .newgame, #hud .result, #hud .play, #hud .level{
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.33s, opacity 0.33s linear;
   text-shadow: -2px 3px 0 rgba(0,0,0,0.5);font-weight:bold;
 }
-#hud.show, #hud .newgame.show, #hud .result.show, #hud .play.show {
+#hud.show, #hud .newgame.show, #hud .result.show, #hud .play.show, #hud .level.show {
   visibility: visible;
   opacity: 0.9;
   transition-delay: 0s;
