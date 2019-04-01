@@ -260,6 +260,8 @@ require([
       let map = new Map({
         basemap: "none"
       });
+
+      map.ground.surfaceColor = "#e3eff6";
       
 
       this.view = new SceneView({
