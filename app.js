@@ -26,6 +26,10 @@ require([
     gltfcup: {href: "./low-poly_plastic_cup/scene.gltf"}
   }
 
+  var gltfcupCredit = document.createElement("div");
+  gltfcupCredit.innerHTML = '<a href="https://sketchfab.com/3d-models/low-poly-plastic-cup-free-download-89938b8ecedf4ab89d78fd9f4b40b2a4">Cup glTF model</a> from <a href="https://sketchfab.com/dennish2010" target="_blank">3DHaupt</a> under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>';
+  gltfcupCredit.classList.add("credit");
+
   var cupSymbol = {
     type: "point-3d",
     symbolLayers: [{
@@ -262,6 +266,8 @@ require([
         view: this.view
       });
       this.view.ui.add(homeWidget, "top-left");
+      this.view.ui.add(gltfcupCredit, "manual");
+      
       
       var graphicsLayer = new GraphicsLayer();
       this.graphicsLayer = graphicsLayer;

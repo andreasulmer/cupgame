@@ -124,3 +124,18 @@ body,
 :focus {
   outline:0;
 }
+
+.credit {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  font-size: 9px;
+  opacity: 0.8;
+  color: grey;
+}
+
+a {
+  color: #3093c7;
+}
