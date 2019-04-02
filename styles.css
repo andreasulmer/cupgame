@@ -112,3 +112,15 @@ body,
   background-image: linear-gradient(to bottom,#1c5a85, #0b2537);
   line-height: 2em;
 }
+
+.esri-home, .esri-home:active, .esri-home:hover {
+  background: none;
+}
+
+.esri-icon-home {
+  color: white;
+}
+
+:focus {
+  outline:0;
+}

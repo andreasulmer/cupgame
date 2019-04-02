@@ -3,9 +3,10 @@ require([
   "esri/views/SceneView",
   "esri/layers/GraphicsLayer",
   "esri/Graphic",
+  "esri/widgets/Home",
   "dojo/Deferred",
   "dojo/domReady!"
-], function (Map, SceneView, GraphicsLayer, Graphic, Deferred) {
+], function (Map, SceneView, GraphicsLayer, Graphic, Home, Deferred) {
 
 
   /* helpers */
@@ -256,6 +257,11 @@ require([
       this.view.environment.lighting.cameraTrackingEnabled = false;
 
       this.view.ui.components = [];
+
+      var homeWidget = new Home({
+        view: this.view
+      });
+      this.view.ui.add(homeWidget, "top-left");
       
       var graphicsLayer = new GraphicsLayer();
       this.graphicsLayer = graphicsLayer;
