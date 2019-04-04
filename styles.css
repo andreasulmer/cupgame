@@ -14,8 +14,8 @@ body,
 #hud {
   position: absolute;
   bottom: 8%;
-  left:0;
-  right:0;
+  left: 50%;
+  transform: translate(-50%);
   margin: auto;
   width: 90vw;
   max-width: 500px;
