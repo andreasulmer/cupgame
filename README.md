@@ -31,10 +31,8 @@ The app should work with any recent version of Chrome, Edge, Firefox or Safari. 
 
 ## Licensing
 
-The cup game is licensed under the Creative Commons Attribution-NonCommercial 4.0 International Public License (CC-BY-NC 4.0).
 
-A copy of the license is available in the repository's [license.txt](./license.txt ) file.
-
-The [glTF cup model](https://sketchfab.com/3d-models/low-poly-plastic-cup-free-download-89938b8ecedf4ab89d78fd9f4b40b2a4) is a modified version from [3DHaupt](https://sketchfab.com/dennish2010) also licensed under (CC-BY-NC 4.0). The modifications consist of changing the colors on the texture file `Plastic_Cup_baseColor.png`.
+The [glTF cup model](https://sketchfab.com/3d-models/low-poly-plastic-cup-free-download-89938b8ecedf4ab89d78fd9f4b40b2a4) is a modified version from [3DHaupt](https://sketchfab.com/dennish2010) licensed under (CC-BY-NC 4.0). The modifications consist of changing the colors on the texture file `Plastic_Cup_baseColor.png`.
+A copy of the license is available in the repository's [license-model.txt](./license-model.txt ) file.
 
 The fonts used in the game are licensed under SIL OpenFont License. A copy of the license is available in the repository's [font-license.txt](./font-license.txt) file.
