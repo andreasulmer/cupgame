@@ -15,7 +15,7 @@ Follow the ball to rescue the princess: a web based 3D game built using the [Arc
   \
   Press **Go Again** to continue playing or **New Game** to start over
   
-4. After selecting the correct cup enough times in a row, you reach the :european_castle: where the :princess: is released from the hands of the lord evil\
+4. After selecting the correct cup enough times in a row, you reach the :european_castle: where the :princess: is released from the hands of the evil lord\
   \
   Congratulations, happy end!
 
