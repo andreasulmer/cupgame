@@ -1,9 +1,9 @@
-3D Cup Game
-===========
+3D Cup Game :trophy:
+====================
 
 Follow the ball to rescue the princess: a web based 3D game built using the [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/).
 
-[Play Online](https://andreasulmer.github.io/cupgame)
+:arrow_forward: [Play Online](https://andreasulmer.github.io/cupgame)
 
 [![cup game](screenshot.png)](https://andreasulmer.github.io/cupgame)
 
